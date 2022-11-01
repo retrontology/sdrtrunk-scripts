@@ -32,7 +32,7 @@ class Trunker {
 class Channel {
     constructor(channel) {
         for (const key in channel) {
-            this[key] = channel.key;
+            this[key] = channel[key];
         }
         this.listening = false;
     }
