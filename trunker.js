@@ -1,5 +1,5 @@
 class Trunker {
-    constructor(url, port = 8001, proto = 'http') {
+    constructor(url, port = 8000, proto = 'http') {
         this.proto = proto;
         this.url = url;
         this.port = port;
