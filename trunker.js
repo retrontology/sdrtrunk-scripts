@@ -16,24 +16,25 @@ class Trunker {
         return JSON.parse(request.responseText);
     }
 
-    addChannel(name, path, group) {
-        this.channels[name] = new Channel(name, path, group);
+    addChannel(channel) {
+        this.channels[channel.server_name] = new Channel(channel);
         this.groups.add(group);
     }
 
     populate() {
         let status = this.status;
-        for (const source of status.icestats.source){
-            this.addChannel(source.server_name, source.listenurl, source.genre)
+        for (const channel of status.icestats.source){
+            this.addChannel(channel)
         }
     }
 }
 
 class Channel {
-    constructor(name, url, group) {
-        this.name = name;
-        this.url = url;
-        this.group = group;
+    constructor(channel) {
+        for (const key in channel) {
+            this[key] = channel.key;
+        }
+        this.listening = false;
     }
 }
   
