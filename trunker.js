@@ -1,7 +1,5 @@
 class Trunker {
     constructor() {
-        this.channels = {};
-        this.groups = new Set();
         this.populate();
     }
 
@@ -21,11 +19,17 @@ class Trunker {
         this.groups.add(channel.genre);
     }
 
-    populate() {
+    getChannels() {
+        this.channels = {};
+        this.groups = new Set();
         let status = this.status;
         for (const channel of status.icestats.source){
-            this.addChannel(channel)
+            this.addChannel(channel);
         }
+    }
+
+    populate() {
+        this.getChannels();
     }
 }
 
@@ -35,6 +39,10 @@ class Channel {
             this[key] = channel[key];
         }
         this.listening = false;
+    }
+
+    get element() {
+        let element = Document.createElement();
     }
 }
   
