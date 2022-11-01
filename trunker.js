@@ -13,7 +13,7 @@ class Trunker {
     }
 
     get statusUrl() {
-        return this.baseUrl + '/status-json.xsl';
+        return '/status-json.xsl';
     }
 
     get status() {
