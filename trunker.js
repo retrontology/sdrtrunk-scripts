@@ -21,15 +21,6 @@ class Trunker {
         this.groups.add(group);
     }
 
-    getChannelUrl(channel) {
-        if (channel in this.channels) {
-            return '/' + this.channels[channel].path;
-        }
-        else {
-            return undefined;
-        }
-    }
-
     populate() {
         let status = this.status;
         for (const source of status.icestats.source){
