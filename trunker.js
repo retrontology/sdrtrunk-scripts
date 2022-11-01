@@ -18,7 +18,7 @@ class Trunker {
 
     get status() {
         let request = new XMLHttpRequest();
-        request.open( "GET", this.statsUrl, false ); // false for synchronous request
+        request.open( "GET", this.statusUrl, false ); // false for synchronous request
         request.send( null );
         return JSON.parse(request.responseText);
     }
