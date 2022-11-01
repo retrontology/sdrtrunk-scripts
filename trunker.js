@@ -45,12 +45,6 @@ class Channel {
         this.group = group;
     }
 }
-
-var url = 'http://www.mymainsite.com/somepath/path2/path3/path4';
-
-var pathname = new URL(url).;
-
-console.log(pathname);
   
 var trunky = new Trunker();
 
