@@ -32,7 +32,9 @@ class Trunker {
 
     populate() {
         let status = this.status;
-        alert('lole');
+        for (const source of status.icestats.source){
+            this.addChannel(source.name, source.path, source.genre)
+        }
     }
 }
 
