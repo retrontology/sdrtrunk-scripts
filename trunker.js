@@ -33,7 +33,7 @@ class Trunker {
     populate() {
         let status = this.status;
         for (const source of status.icestats.source){
-            this.addChannel(source.name, source.path, source.genre)
+            this.addChannel(source.server_name, source.listenurl, source.genre)
         }
     }
 }
