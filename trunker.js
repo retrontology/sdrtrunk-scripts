@@ -17,7 +17,7 @@ class Trunker {
     }
 
     addChannel(name, path, group) {
-        this.channels[path] = new Channel(name, path, group);
+        this.channels[name] = new Channel(name, path, group);
         this.groups.add(group);
     }
 
