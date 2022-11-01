@@ -1,15 +1,8 @@
 class Trunker {
-    constructor(url, port = 8000, proto = 'http') {
-        this.proto = proto;
-        this.url = url;
-        this.port = port;
+    constructor() {
         this.channels = {};
         this.groups = new Set();
         this.populate();
-    }
-
-    get baseUrl() {
-        return this.proto + '://' + this.url + ':' + this.port;
     }
 
     get statusUrl() {
@@ -30,7 +23,7 @@ class Trunker {
 
     getChannelUrl(channel) {
         if (channel in this.channels) {
-            return this.baseUrl + '/' + this.channels[channel].path;
+            return '/' + this.channels[channel].path;
         }
         else {
             return undefined;
@@ -51,5 +44,5 @@ class Channel {
     }
 }
   
-var trunky = new Trunker('192.168.1.100');
+var trunky = new Trunker();
 
