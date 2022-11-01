@@ -18,7 +18,7 @@ class Trunker {
 
     addChannel(channel) {
         this.channels[channel.server_name] = new Channel(channel);
-        this.groups.add(group);
+        this.groups.add(channel.genre);
     }
 
     populate() {
