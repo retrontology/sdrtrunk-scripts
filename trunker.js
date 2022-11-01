@@ -39,12 +39,18 @@ class Trunker {
 }
 
 class Channel {
-    constructor(name, path, group) {
+    constructor(name, url, group) {
         this.name = name;
-        this.path = path;
+        this.url = url;
         this.group = group;
     }
 }
+
+var url = 'http://www.mymainsite.com/somepath/path2/path3/path4';
+
+var pathname = new URL(url).;
+
+console.log(pathname);
   
 var trunky = new Trunker();
 

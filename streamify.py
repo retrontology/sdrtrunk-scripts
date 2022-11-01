@@ -185,7 +185,7 @@ def create_stream(
     stream.set('password', password)
     stream.set('maximum_recording_age', max_recording_age)
     stream.set('genre', group)
-    stream.set('name', name)
+    stream.set('name', pathify_name(name))
     format_element = ElementTree.Element('format')
     format_element.text=format
     stream.append(format_element)
