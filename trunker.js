@@ -64,25 +64,38 @@ class Channel {
         for (const key in channel) {
             this[key] = channel[key];
         }
+        this.active = true;
         this.group = sanitizeName(this.genre)
         this.generateElement();
     }
 
     generateElement() {
-        this.element = document.createElement('td');
-        this.element.classList.add('channel-cell');
-        let button = document.createElement('button');
-        button.classList.add('channel-button', this.group + '-group-button');
-        this.element.appendChild(button);
-        let indicator = document.createElement('div');
-        indicator.classList.add('channel-button-indicator');
-        button.append(indicator);
+        this.cell = document.createElement('td');
+        this.cell.classList.add('channel-cell');
+        this.button = document.createElement('button');
+        this.button.classList.add('channel-button', this.group + '-group-button');
+        this.button.onclick = this.toggle;
+        this.cell.appendChild(this.button);
+        this.indicator = document.createElement('div');
+        this.indicator.classList.add('channel-button-indicator');
+        this.button.append(this.indicator);
         let title = document.createElement('div');
         title.classList.add('channel-button-title');
         title.textContent = this.server_description;
         button.append(title);
-        document.getElementById('group-' + this.group).appendChild(this.element);
-        return this.element;
+        document.getElementById('group-' + this.group).appendChild(this.cell);
+        return this.cell;
+    }
+
+    toggle(ev) {
+        if (this.active) {
+            this.indicator.style.backgroundColor = 'var(--inactive)';
+            this.active = false;
+        }
+        else {
+            this.indicator.style.backgroundColor = 'var(--inactive)';
+            this.active = true;
+        }
     }
 }
 
