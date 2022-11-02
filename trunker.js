@@ -55,6 +55,7 @@ class Channel {
         for (const key in channel) {
             this[key] = channel[key];
         }
+        this.group = sanitizeName(this.genre)
         this.generateElement();
     }
 
@@ -62,16 +63,21 @@ class Channel {
         this.element = document.createElement('td');
         this.element.classList.add('channel-cell');
         let button = document.createElement('button');
-        button.classList.add('channel-button', this.genre + '-group-button');
+        button.classList.add('channel-button', this.group + '-group-button');
         let indicator = document.createElement('div');
         indicator.classList.add('channel-button-indicator');
         button.append(indicator);
         let title = document.createElement('div');
         title.classList.add('channel-button-title');
         button.append(title);
-        document.getElementById('group-' + this.genre).appendChild(this.element);
+        document.getElementById('group-' + this.group).appendChild(this.element);
         return this.element;
     }
+}
+
+function sanitizeName(name) {
+    name = name.replace(' ', '');
+    return name;
 }
   
 var trunky = new Trunker();
