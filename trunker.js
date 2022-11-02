@@ -89,13 +89,13 @@ class Channel {
     }
 
     toggle() {
-        //let indicator = document.getElementById('channel-button-indicator-' + this.server_name);
+        let indicator = document.getElementById('channel-button-indicator-' + this.server_name);
         if (this.active) {
-            this.indicator.style.backgroundColor = 'var(--inactive)';
+            indicator.style.backgroundColor = 'var(--inactive)';
             this.active = false;
         }
         else {
-            this.indicator.style.backgroundColor = 'var(--active)';
+            indicator.style.backgroundColor = 'var(--active)';
             this.active = true;
         }
     }
