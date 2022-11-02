@@ -17,10 +17,13 @@ class Trunker {
             let group = document.createElement('tr');
             group.classList.add('channel-group');
             group.id = 'group-' + name;
-            let title = document.createElement('div');
+            let title_row = document.createElement('tr');
+            title_row.className.add('channel-group-header');
+            group.appendChild(title_row);
+            let title = document.createElement('th');
             title.classList.add('channel-group-title');
             title.textContent = name;
-            group.appendChild(title);
+            title_row.appendChild(title);
             document.getElementById('channel-table').appendChild(group);
             this.groups.add(name);
         }
