@@ -8,8 +8,18 @@ class Trunker {
     }
 
     addChannel(channel) {
+        this.addGroup(channel.genre);
         this.channels[channel.server_name] = new Channel(channel);
-        this.groups.add(channel.genre);
+    }
+
+    addGroup(name) {
+        if (!this.groups.has(name)) {
+            let group = document.createElement('tr');
+            group.classList.add('channel-group');
+            group.id = 'group-' + name;
+            document.getElementById('channel-table').appendChild(group);
+            this.groups.add(name);
+        }
     }
 
     getChannels() {
@@ -45,13 +55,25 @@ class Channel {
         for (const key in channel) {
             this[key] = channel[key];
         }
-        this.listening = false;
+        this.generateElement();
     }
 
-    get element() {
-        let element = Document.createElement();
+    generateElement() {
+        this.element = Document.createElement('td');
+        this.element.classList.add('channel-cell');
+        let button = Document.createElement('button');
+        button.classList.add('channel-button', this.genre + '-group-button');
+        let indicator = Document.createElement('div');
+        indicator.classList.add('channel-button-indicator');
+        button.append(indicator);
+        let title = Document.createElement('div');
+        title.classList.add('channel-button-title');
+        button.append(title);
+        document.getElementById('group-' + this.genre).appendChild(this.element);
+        return this.element;
     }
 }
   
 var trunky = new Trunker();
 
+this.groups.add(name);
