@@ -8,7 +8,7 @@ class Trunker {
     }
 
     addChannel(channel) {
-        this.addGroup(channel.group);
+        this.addGroup(sanitizeName(channel.genre));
         this.channels[channel.server_name] = new Channel(channel);
     }
 
