@@ -59,14 +59,14 @@ class Channel {
     }
 
     generateElement() {
-        this.element = Document.createElement('td');
+        this.element = document.createElement('td');
         this.element.classList.add('channel-cell');
-        let button = Document.createElement('button');
+        let button = document.createElement('button');
         button.classList.add('channel-button', this.genre + '-group-button');
-        let indicator = Document.createElement('div');
+        let indicator = document.createElement('div');
         indicator.classList.add('channel-button-indicator');
         button.append(indicator);
-        let title = Document.createElement('div');
+        let title = document.createElement('div');
         title.classList.add('channel-button-title');
         button.append(title);
         document.getElementById('group-' + this.genre).appendChild(this.element);
