@@ -88,8 +88,8 @@ class Channel {
         return this.element;
     }
 
-    toggle(a, b) {
-        let indicator = document.getElementById('channel-button-indicator-' + this.server_name);
+    toggle(event) {
+        let indicator = event.firstChild.firstChild
         if (this.active) {
             indicator.style.backgroundColor = 'var(--inactive)';
             this.active = false;
