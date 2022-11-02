@@ -64,6 +64,7 @@ class Channel {
         this.element.classList.add('channel-cell');
         let button = document.createElement('button');
         button.classList.add('channel-button', this.group + '-group-button');
+        this.element.appendChild(button);
         let indicator = document.createElement('div');
         indicator.classList.add('channel-button-indicator');
         button.append(indicator);
