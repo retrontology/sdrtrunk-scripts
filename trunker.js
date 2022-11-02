@@ -70,30 +70,32 @@ class Channel {
     }
 
     generateElement() {
-        this.cell = document.createElement('td');
-        this.cell.classList.add('channel-cell');
-        this.button = document.createElement('button');
-        this.button.classList.add('channel-button', this.group + '-group-button');
-        this.button.onclick = this.toggle;
-        this.cell.appendChild(this.button);
-        this.indicator = document.createElement('div');
-        this.indicator.classList.add('channel-button-indicator');
-        this.button.append(this.indicator);
+        this.element = document.createElement('td');
+        this.element.classList.add('channel-cell');
+        button = document.createElement('button');
+        button.classList.add('channel-button', this.group + '-group-button');
+        button.onclick = this.toggle;
+        this.element.appendChild(button);
+        indicator = document.createElement('div');
+        indicator.classList.add('channel-button-indicator');
+        indicator.id = 'channel-button-indicator-' + this.server_name;
+        button.append(indicator);
         let title = document.createElement('div');
         title.classList.add('channel-button-title');
         title.textContent = this.server_description;
-        this.button.append(title);
-        document.getElementById('group-' + this.group).appendChild(this.cell);
-        return this.cell;
+        button.append(title);
+        document.getElementById('group-' + this.group).appendChild(this.element);
+        return this.element;
     }
 
     toggle(ev) {
+        let indicator = document.getElementById('channel-button-indicator-' + this.server_name);
         if (this.active) {
-            this.indicator.style.backgroundColor = 'var(--inactive)';
+            indicator.style.backgroundColor = 'var(--inactive)';
             this.active = false;
         }
         else {
-            this.indicator.style.backgroundColor = 'var(--inactive)';
+            indicator.style.backgroundColor = 'var(--active)';
             this.active = true;
         }
     }
