@@ -8,12 +8,13 @@ class Trunker {
     }
 
     addChannel(channel) {
-        this.addGroup(sanitizeName(channel.genre));
+        this.addGroup(channel.genre);
         this.channels[channel.server_name] = new Channel(channel);
     }
 
     addGroup(name) {
         if (!this.groups.has(name)) {
+            let clean_name = sanitizeName(name);
             let channel_table = document.getElementById('channel-table');
             let title_row = document.createElement('tr');
             title_row.classList.add('channel-group-header');
@@ -23,10 +24,10 @@ class Trunker {
             title_row.appendChild(title);
             let group_row = document.createElement('tr');
             group_row.classList.add('channel-group');
-            group_row.id = 'group-' + name;
+            group_row.id = 'group-' + clean_name;
             channel_table.appendChild(title_row)
             channel_table.appendChild(group_row);
-            this.groups.add(name);
+            this.groups.add(clean_name);
         }
     }
 
