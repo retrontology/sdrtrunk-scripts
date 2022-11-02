@@ -1,17 +1,10 @@
 class Trunker {
     constructor() {
-        this.populate();
+        this.getChannels();
     }
 
     get statusUrl() {
         return '/status-json.xsl';
-    }
-
-    get status() {
-        let request = new XMLHttpRequest();
-        request.open( "GET", this.statusUrl, false ); // false for synchronous request
-        request.send( null );
-        return JSON.parse(request.responseText);
     }
 
     addChannel(channel) {
@@ -20,17 +13,31 @@ class Trunker {
     }
 
     getChannels() {
+        let request = new XMLHttpRequest();
+        request.open( "GET", this.statusUrl, true ); // false for synchronous request
+        request.onload = (e) => {
+            if (request.readyState === 4) {
+              if (request.status === 200) {
+                this.populate(JSON.parse(request.responseText));
+              } else {
+                console.error(request.statusText);
+              }
+            }
+          };
+          request.onerror = (e) => {
+            console.error(request.statusText);
+          };
+        request.send( null );
+    }
+
+    populate(data) {
         this.channels = {};
         this.groups = new Set();
-        let status = this.status;
-        for (const channel of status.icestats.source){
+        for (const channel of data.icestats.source){
             this.addChannel(channel);
         }
     }
 
-    populate() {
-        this.getChannels();
-    }
 }
 
 class Channel {
