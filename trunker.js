@@ -1,7 +1,5 @@
 class Trunker {
     constructor() {
-        this.channels = {};
-        this.groups = new Set();
         this.getChannels();
     }
 
@@ -77,5 +75,3 @@ class Channel {
 }
   
 var trunky = new Trunker();
-
-this.groups.add(name);
