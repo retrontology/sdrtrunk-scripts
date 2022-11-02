@@ -3,6 +3,19 @@
     --inactive: red;
 }
 
+table.channel-table {
+    width: 100%;
+}
+
+tr.channel-group-header {
+    
+}
+
+th.channel-group-title {
+    font-size: 32px;
+    margin: auto;
+}
+
 tr.channel-group {
     display: flex;
     flex-wrap: wrap;
@@ -10,24 +23,34 @@ tr.channel-group {
 }
 
 td.channel-cell {
-    
 }
 
 button.channel-button {
+    border-style: solid;
+    border-width: 2px;
+    border-color: black;
     display: flex;
-  flex-direction: column;
-  justify-content: center;
+    flex-direction: column;
+    justify-content: center;
     height: 100px;
     width: 100px;
 }
 
 div.channel-button-indicator {
+    border-style: solid;
+    border-width: 2px;
+    border-color: black;
     margin: auto;
     margin-top: 10px;
     background-color: var(--inactive);
     height: 10px;
     width: 30px;
 }
+
 div.channel-button-title {
   margin: auto;
+}
+
+div.channel-button-title {
+    font-weight: 700;
 }
