@@ -74,7 +74,7 @@ class Channel {
         this.element.classList.add('channel-cell');
         let button = document.createElement('button');
         button.classList.add('channel-button', this.group + '-group-button');
-        this.element.addEventListener("click", this.toggle);
+        this.element.addEventListener("click", toggleButton);
         this.element.appendChild(button);
         this.indicator = document.createElement('div');
         this.indicator.classList.add('channel-button-indicator');
@@ -87,23 +87,23 @@ class Channel {
         document.getElementById('group-' + this.group).appendChild(this.element);
         return this.element;
     }
-
-    toggle(event) {
-        let indicator = event.currentTarget.firstChild.firstChild
-        if (this.active) {
-            indicator.style.backgroundColor = 'var(--inactive)';
-            this.active = false;
-        }
-        else {
-            indicator.style.backgroundColor = 'var(--active)';
-            this.active = true;
-        }
-    }
 }
 
 function sanitizeName(name) {
     name = name.replace(' ', '');
     return name;
+}
+
+toggleButton(event) {
+    let indicator = event.currentTarget.firstChild.firstChild
+    if (this.active) {
+        indicator.style.backgroundColor = 'var(--inactive)';
+        this.active = false;
+    }
+    else {
+        indicator.style.backgroundColor = 'var(--active)';
+        this.active = true;
+    }
 }
   
 var trunky = new Trunker();
