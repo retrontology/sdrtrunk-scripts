@@ -1,5 +1,7 @@
 class Trunker {
     constructor() {
+        this.channels = {};
+        this.groups = new Set();
         this.getChannels();
     }
 
