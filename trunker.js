@@ -22,7 +22,7 @@ class Trunker {
             title.classList.add('channel-group-title');
             title.textContent = name;
             title_row.appendChild(title);
-            let group = document.createElement('tr');
+            let group_row = document.createElement('tr');
             group_row.classList.add('channel-group');
             group_row.id = 'group-' + name;
             channel_table.appendChild(title_row)
