@@ -74,12 +74,12 @@ class Channel {
         this.element.classList.add('channel-cell');
         let button = document.createElement('button');
         button.classList.add('channel-button', this.group + '-group-button');
-        button.onclick = this.toggle;
+        element.addEventListener("click", this.toggle());
         this.element.appendChild(button);
-        let indicator = document.createElement('div');
-        indicator.classList.add('channel-button-indicator');
-        indicator.id = 'channel-button-indicator-' + this.server_name;
-        button.append(indicator);
+        this.indicator = document.createElement('div');
+        this.indicator.classList.add('channel-button-indicator');
+        this.indicator.id = 'channel-button-indicator-' + this.server_name;
+        button.append(this.indicator);
         let title = document.createElement('div');
         title.classList.add('channel-button-title');
         title.textContent = this.server_description;
@@ -88,7 +88,7 @@ class Channel {
         return this.element;
     }
 
-    toggle(ev) {
+    toggle() {
         let indicator = document.getElementById('channel-button-indicator-' + this.server_name);
         if (this.active) {
             indicator.style.backgroundColor = 'var(--inactive)';
