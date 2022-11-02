@@ -82,7 +82,7 @@ class Channel {
         let title = document.createElement('div');
         title.classList.add('channel-button-title');
         title.textContent = this.server_description;
-        button.append(title);
+        this.button.append(title);
         document.getElementById('group-' + this.group).appendChild(this.cell);
         return this.cell;
     }
