@@ -13,8 +13,8 @@ class Trunker {
     }
 
     addGroup(name) {
-        if (!this.groups.has(name)) {
-            let clean_name = sanitizeName(name);
+        let clean_name = sanitizeName(name);
+        if (!this.groups.has(clean_name)) {
             let channel_table = document.getElementById('channel-table');
             let title_row = document.createElement('tr');
             title_row.classList.add('channel-group-header');
