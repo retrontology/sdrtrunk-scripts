@@ -70,6 +70,7 @@ class Channel {
         button.append(indicator);
         let title = document.createElement('div');
         title.classList.add('channel-button-title');
+        title.textContent = this.server_description;
         button.append(title);
         document.getElementById('group-' + this.group).appendChild(this.element);
         return this.element;
