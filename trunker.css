@@ -1,0 +1,33 @@
+:root {
+    --active: green;
+    --inactive: red;
+}
+
+tr.channel-group {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+td.channel-cell {
+    
+}
+
+button.channel-button {
+    display: flex;
+  flex-direction: column;
+  justify-content: center;
+    height: 100px;
+    width: 100px;
+}
+
+div.channel-button-indicator {
+    margin: auto;
+    margin-top: 10px;
+    background-color: var(--inactive);
+    height: 10px;
+    width: 30px;
+}
+div.channel-button-title {
+  margin: auto;
+}
