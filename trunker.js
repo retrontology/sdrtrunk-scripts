@@ -94,7 +94,7 @@ function sanitizeName(name) {
     return name;
 }
 
-toggleButton(event) {
+function toggleButton(event) {
     let indicator = event.currentTarget.firstChild.firstChild
     if (this.active) {
         indicator.style.backgroundColor = 'var(--inactive)';
