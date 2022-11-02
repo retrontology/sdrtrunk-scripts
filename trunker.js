@@ -72,11 +72,11 @@ class Channel {
     generateElement() {
         this.element = document.createElement('td');
         this.element.classList.add('channel-cell');
-        button = document.createElement('button');
+        let button = document.createElement('button');
         button.classList.add('channel-button', this.group + '-group-button');
         button.onclick = this.toggle;
         this.element.appendChild(button);
-        indicator = document.createElement('div');
+        let indicator = document.createElement('div');
         indicator.classList.add('channel-button-indicator');
         indicator.id = 'channel-button-indicator-' + this.server_name;
         button.append(indicator);
