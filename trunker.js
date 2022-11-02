@@ -91,11 +91,11 @@ class Channel {
     toggle(element) {
         //let indicator = document.getElementById('channel-button-indicator-' + this.server_name);
         if (this.active) {
-            this.indicator.style.backgroundColor = 'var(--inactive)';
+            element.style.backgroundColor = 'var(--inactive)';
             this.active = false;
         }
         else {
-            this.indicator.style.backgroundColor = 'var(--active)';
+            element.style.backgroundColor = 'var(--active)';
             this.active = true;
         }
     }
