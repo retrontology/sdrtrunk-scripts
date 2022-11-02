@@ -14,9 +14,7 @@ class Trunker {
 
     addGroup(name) {
         if (!this.groups.has(name)) {
-            let group = document.createElement('tr');
-            group.classList.add('channel-group');
-            group.id = 'group-' + name;
+            let channel_table = document.getElementById('channel-table');
             let title_row = document.createElement('tr');
             title_row.classList.add('channel-group-header');
             group.appendChild(title_row);
@@ -24,7 +22,11 @@ class Trunker {
             title.classList.add('channel-group-title');
             title.textContent = name;
             title_row.appendChild(title);
-            document.getElementById('channel-table').appendChild(group);
+            let group = document.createElement('tr');
+            group_row.classList.add('channel-group');
+            group_row.id = 'group-' + name;
+            channel_table.appendChild(title_row)
+            channel_table.appendChild(group_row);
             this.groups.add(name);
         }
     }
