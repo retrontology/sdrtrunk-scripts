@@ -89,7 +89,7 @@ class Channel {
     }
 
     toggle(event) {
-        let indicator = event.firstChild.firstChild
+        let indicator = event.srcElement.firstChild
         if (this.active) {
             indicator.style.backgroundColor = 'var(--inactive)';
             this.active = false;
