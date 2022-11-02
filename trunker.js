@@ -72,18 +72,18 @@ class Channel {
     generateElement() {
         this.element = document.createElement('td');
         this.element.classList.add('channel-cell');
-        let button = document.createElement('button');
-        button.classList.add('channel-button', this.group + '-group-button');
+        this.button = document.createElement('button');
+        this.button.classList.add('channel-button', this.group + '-group-button');
         this.element.addEventListener("click", toggleButton);
-        this.element.appendChild(button);
+        this.element.appendChild(this.button);
         this.indicator = document.createElement('div');
         this.indicator.classList.add('channel-button-indicator');
         this.indicator.id = 'channel-button-indicator-' + this.server_name;
-        button.append(this.indicator);
-        let title = document.createElement('div');
-        title.classList.add('channel-button-title');
-        title.textContent = this.server_description;
-        button.append(title);
+        this.button.append(this.indicator);
+        this.title = document.createElement('div');
+        this.title.classList.add('channel-button-title');
+        this.title.textContent = this.server_description;
+        this.button.append(this.title);
         document.getElementById('group-' + this.group).appendChild(this.element);
         return this.element;
     }
