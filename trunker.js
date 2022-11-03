@@ -108,14 +108,15 @@ function toggleButton(event) {
     let channel = event.currentTarget.getAttribute('data-channel');
     let group = event.currentTarget.getAttribute('data-group');
     let active = parseInt(event.currentTarget.getAttribute('data-active'));
+    let audio = document.getElementById('channel-audio-' + channel);
     if (active) {
-        
+        audio.suspend()
         indicator.style.backgroundColor = 'var(--inactive)';
         event.currentTarget.setAttribute('data-active', 0);
     }
     else {
+        audio.play()
         indicator.style.backgroundColor = 'var(--active)';
-        myAudio = document.createElement('audio');
         event.currentTarget.setAttribute('data-active', 1);
     }
 }
