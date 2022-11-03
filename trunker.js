@@ -88,10 +88,6 @@ class Channel {
         this.title.classList.add('channel-button-title');
         this.title.textContent = this.server_description;
         this.button.append(this.title);
-        this.audio = document.createElement('audio');
-        this.audio.id = 'channel-audio-' + this.server_name;
-        this.audio.setAttribute('src', '/' + this.server_name);
-        this.button.append(this.audio);
         document.getElementById('group-' + this.group).appendChild(this.element);
         return this.element;
     }
@@ -103,21 +99,28 @@ function sanitizeName(name) {
 }
 
 function toggleButton(event) {
-    let indicator = event.currentTarget.firstChild;
-    let url = event.currentTarget.getAttribute('data-listen');
-    let channel = event.currentTarget.getAttribute('data-channel');
-    let group = event.currentTarget.getAttribute('data-group');
-    let active = parseInt(event.currentTarget.getAttribute('data-active'));
-    let audio = document.getElementById('channel-audio-' + channel);
+    let button = event.currentTarget;
+    let indicator = button.firstChild;
+    let url = button.getAttribute('data-listen');
+    let channel = button.getAttribute('data-channel');
+    let group = button.getAttribute('data-group');
+    let active = parseInt(button.getAttribute('data-active'));
     if (active) {
-        audio.suspend()
+        let audio = document.getElementById('channel-audio-' + channel);
+        audio.pause();
+        audio.remove();
         indicator.style.backgroundColor = 'var(--inactive)';
-        event.currentTarget.setAttribute('data-active', 0);
+        button.setAttribute('data-active', 0);
     }
     else {
-        audio.play()
+        audio.play();
+        let audio = document.createElement('audio');
+        audio.id = 'channel-audio-' + channel;
+        audio.setAttribute('src', '/' + channel);
+        button.appendChild(audio);
         indicator.style.backgroundColor = 'var(--active)';
-        event.currentTarget.setAttribute('data-active', 1);
+        button.setAttribute('data-active', 1);
+        audio.play();
     }
 }
   
