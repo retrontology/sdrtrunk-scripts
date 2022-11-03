@@ -113,7 +113,6 @@ function toggleButton(event) {
         button.setAttribute('data-active', 0);
     }
     else {
-        audio.play();
         let audio = document.createElement('audio');
         audio.id = 'channel-audio-' + channel;
         audio.setAttribute('src', '/' + channel);
