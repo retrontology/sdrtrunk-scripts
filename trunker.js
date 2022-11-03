@@ -77,6 +77,7 @@ class Channel {
         this.button.setAttribute('data-listen', this.listenurl);
         this.button.setAttribute('data-channel', this.server_name);
         this.button.setAttribute('data-group', this.group);
+        this.button.setAttribute('data-active', 0);
         this.button.addEventListener("click", toggleButton);
         this.element.appendChild(this.button);
         this.indicator = document.createElement('div');
@@ -102,13 +103,15 @@ function toggleButton(event) {
     let url = event.currentTarget.getAttribute('data-listen');
     let channel = event.currentTarget.getAttribute('data-channel');
     let group = event.currentTarget.getAttribute('data-group');
+    let active = event.currentTarget.getAttribute('data-active');
     if (this.active) {
         indicator.style.backgroundColor = 'var(--inactive)';
-        this.active = false;
+        this.active = 0;
     }
     else {
         indicator.style.backgroundColor = 'var(--active)';
-        this.active = true;
+        myAudio = document.createElement('audio');
+        this.active = 1;
     }
 }
   
