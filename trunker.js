@@ -88,6 +88,10 @@ class Channel {
         this.title.classList.add('channel-button-title');
         this.title.textContent = this.server_description;
         this.button.append(this.title);
+        this.audio = document.createElement('audio');
+        this.audio.id = 'channel-audio-' + this.server_name;
+        this.audio.setAttribute('src',this.listenurl);
+        this.button.append(this.audio);
         document.getElementById('group-' + this.group).appendChild(this.element);
         return this.element;
     }
@@ -105,6 +109,7 @@ function toggleButton(event) {
     let group = event.currentTarget.getAttribute('data-group');
     let active = parseInt(event.currentTarget.getAttribute('data-active'));
     if (active) {
+        
         indicator.style.backgroundColor = 'var(--inactive)';
         event.currentTarget.setAttribute('data-active', 0);
     }
