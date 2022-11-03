@@ -135,7 +135,7 @@ def main():
         )
         broadcast = ElementTree.Element('id')
         broadcast.set('type', 'broadcastChannel')
-        broadcast.set('channel', name)
+        broadcast.set('channel', pathify_name(name))
         alias.append(broadcast)
         playlist.append(stream)
         count += 1
