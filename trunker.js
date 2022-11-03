@@ -74,7 +74,10 @@ class Channel {
         this.element.classList.add('channel-cell');
         this.button = document.createElement('button');
         this.button.classList.add('channel-button', this.group + '-group-button');
-        this.element.addEventListener("click", toggleButton);
+        this.button.setAttribute('data-listen', this.listenurl);
+        this.button.setAttribute('data-channel', this.server_name);
+        this.button.setAttribute('data-group', this.group);
+        this.button.addEventListener("click", toggleButton);
         this.element.appendChild(this.button);
         this.indicator = document.createElement('div');
         this.indicator.classList.add('channel-button-indicator');
@@ -95,7 +98,7 @@ function sanitizeName(name) {
 }
 
 function toggleButton(event) {
-    let indicator = event.currentTarget.firstChild.firstChild
+    let indicator = event.currentTarget.firstChild
     if (this.active) {
         indicator.style.backgroundColor = 'var(--inactive)';
         this.active = false;
