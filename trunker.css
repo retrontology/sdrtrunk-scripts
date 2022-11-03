@@ -55,7 +55,7 @@ div.channel-button-indicator {
 div.channel-button-activity {
     height: 15px;
     width: 15px;
-    background-color: var(--active);
+    background-color: var(--inactive);
     border-radius: 50%;
     border-style: solid;
     border-width: 2px;
