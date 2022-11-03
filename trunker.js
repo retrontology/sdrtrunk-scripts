@@ -113,7 +113,7 @@ function toggleButton(event) {
         let audio = document.getElementById('channel-audio-' + channel);
         audio.pause();
         audio.remove();
-        indicator.style.backgroundColor = 'var(--inactive)';
+        indicator.style.backgroundColor = 'var(--off)';
         button.setAttribute('data-active', 0);
     }
     else {
@@ -123,7 +123,7 @@ function toggleButton(event) {
         audio.load();
         audio.play();
         button.appendChild(audio);
-        indicator.style.backgroundColor = 'var(--active)';
+        indicator.style.backgroundColor = 'var(--on)';
         button.setAttribute('data-active', 1);
     }
 }

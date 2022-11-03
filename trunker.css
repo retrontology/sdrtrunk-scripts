@@ -1,6 +1,8 @@
 :root {
-    --active: green;
-    --inactive: red;
+    --on: lightgreen;
+    --off: red;
+    --active: #408dff;
+    --inactive: #183053;
 }
 
 table.channel-table {
@@ -44,9 +46,22 @@ div.channel-button-indicator {
     border-color: black;
     margin: auto;
     margin-top: 10px;
-    background-color: var(--inactive);
+    margin-bottom: 10px;
+    background-color: var(--off);
     height: 10px;
     width: 30px;
+}
+
+div.channel-button-activity {
+    height: 15px;
+    width: 15px;
+    background-color: var(--active);
+    border-radius: 50%;
+    border-style: solid;
+    border-width: 2px;
+    border-color: black;
+    margin: auto;
+    margin-top: 0px;
 }
 
 div.channel-button-title {
