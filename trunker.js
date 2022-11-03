@@ -74,7 +74,7 @@ class Channel {
         this.element.classList.add('channel-cell');
         this.button = document.createElement('button');
         this.button.classList.add('channel-button', this.group + '-group-button');
-        this.button.setAttribute('data-listen', this.listenurl);
+        this.button.setAttribute('data-listen', '/' + this.server_name);
         this.button.setAttribute('data-channel', this.server_name);
         this.button.setAttribute('data-group', this.group);
         this.button.setAttribute('data-active', 0);
@@ -90,7 +90,7 @@ class Channel {
         this.button.append(this.title);
         this.audio = document.createElement('audio');
         this.audio.id = 'channel-audio-' + this.server_name;
-        this.audio.setAttribute('src',this.listenurl);
+        this.audio.setAttribute('src', '/' + this.server_name);
         this.button.append(this.audio);
         document.getElementById('group-' + this.group).appendChild(this.element);
         return this.element;
