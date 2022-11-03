@@ -90,7 +90,7 @@ class Channel {
         this.button.append(this.title);
         this.audio = document.createElement('audio');
         this.audio.id = 'channel-audio-' + this.server_name;
-        this.audio.setAttribute('src', '/' + this.server_name);
+        this.audio.setAttribute('src', '/' + this.server_name + '.m3u');
         this.button.append(this.audio);
         document.getElementById('group-' + this.group).appendChild(this.element);
         return this.element;
