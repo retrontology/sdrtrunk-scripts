@@ -84,6 +84,10 @@ class Channel {
         this.indicator.classList.add('channel-button-indicator');
         this.indicator.id = 'channel-button-indicator-' + this.server_name;
         this.button.append(this.indicator);
+        this.activity = document.createElement('div');
+        this.activity.classList.add('channel-button-activity');
+        this.activity.id = 'channel-button-activity-' + this.server_name;
+        this.button.append(this.activity);
         this.title = document.createElement('div');
         this.title.classList.add('channel-button-title');
         this.title.textContent = this.server_description;
