@@ -106,12 +106,12 @@ function toggleButton(event) {
     let active = parseInt(event.currentTarget.getAttribute('data-active'));
     if (this.active) {
         indicator.style.backgroundColor = 'var(--inactive)';
-        this.active = 0;
+        event.currentTarget.setAttribute('data-active', 0);
     }
     else {
         indicator.style.backgroundColor = 'var(--active)';
         myAudio = document.createElement('audio');
-        this.active = 1;
+        event.currentTarget.setAttribute('data-active', 1);
     }
 }
   
