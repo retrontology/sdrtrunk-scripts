@@ -104,7 +104,7 @@ function toggleButton(event) {
     let channel = event.currentTarget.getAttribute('data-channel');
     let group = event.currentTarget.getAttribute('data-group');
     let active = parseInt(event.currentTarget.getAttribute('data-active'));
-    if (this.active) {
+    if (active) {
         indicator.style.backgroundColor = 'var(--inactive)';
         event.currentTarget.setAttribute('data-active', 0);
     }
