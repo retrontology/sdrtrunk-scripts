@@ -98,7 +98,10 @@ function sanitizeName(name) {
 }
 
 function toggleButton(event) {
-    let indicator = event.currentTarget.firstChild
+    let indicator = event.currentTarget.firstChild;
+    let url = event.currentTarget.getAttribute('data-listen');
+    let channel = event.currentTarget.getAttribute('data-channel');
+    let group = event.currentTarget.getAttribute('data-group');
     if (this.active) {
         indicator.style.backgroundColor = 'var(--inactive)';
         this.active = false;
