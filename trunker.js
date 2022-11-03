@@ -103,7 +103,7 @@ function toggleButton(event) {
     let url = event.currentTarget.getAttribute('data-listen');
     let channel = event.currentTarget.getAttribute('data-channel');
     let group = event.currentTarget.getAttribute('data-group');
-    let active = event.currentTarget.getAttribute('data-active');
+    let active = parseInt(event.currentTarget.getAttribute('data-active'));
     if (this.active) {
         indicator.style.backgroundColor = 'var(--inactive)';
         this.active = 0;
