@@ -116,10 +116,11 @@ function toggleButton(event) {
         let audio = document.createElement('audio');
         audio.id = 'channel-audio-' + channel;
         audio.setAttribute('src', '/' + channel);
+        audio.load();
+        audio.play();
         button.appendChild(audio);
         indicator.style.backgroundColor = 'var(--active)';
         button.setAttribute('data-active', 1);
-        audio.play();
     }
 }
   
