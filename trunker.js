@@ -119,9 +119,15 @@ function enableChannel(button) {
     let audio = document.createElement('audio');
         audio.id = 'channel-audio-' + channel;
         audio.setAttribute('src', '/' + channel);
+        audio.setAttribute('data-channel', channel);
         audio.play();
         audio.addEventListener('playing', onPlaying);
-
+        audio.addEventListener('ended', onQuiet);
+        audio.addEventListener('error', onQuiet);
+        audio.addEventListener('pause', onQuiet);
+        audio.addEventListener('stalled', onQuiet);
+        audio.addEventListener('suspend', onQuiet);
+        audio.addEventListener('waiting', onQuiet);
         button.appendChild(audio);
         indicator.style.backgroundColor = 'var(--on)';
         button.setAttribute('data-active', 1);
@@ -138,7 +144,17 @@ function disableChannel(button) {
 }
 
 function onPlaying(event) {
-    console.log(test);
+    let audio = event.currentTarget;
+    let channel = audio.getAttribute('data-channel');
+    let indicator = document.getElementById('channel-button-activity-' + channel);
+    indicator.style.backgroundColor = 'var(--active)';
+}
+
+function onQuiet(event) {
+    let audio = event.currentTarget;
+    let channel = audio.getAttribute('data-channel');
+    let indicator = document.getElementById('channel-button-activity-' + channel);
+    indicator.style.backgroundColor = 'var(--inactive)';
 }
   
 var trunky = new Trunker();
