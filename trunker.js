@@ -135,8 +135,8 @@ function enableChannel(button) {
 
 function disableChannel(button) {
     let indicator = button.firstChild;
-    let activity = document.getElementById('channel-button-activity-' + channel);
     let channel = button.getAttribute('data-channel');
+    let activity = document.getElementById('channel-button-activity-' + channel);
     let audio = document.getElementById('channel-audio-' + channel);
         audio.pause();
         audio.removeAttribute('src');
