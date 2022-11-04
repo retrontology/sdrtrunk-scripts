@@ -139,7 +139,7 @@ function disableChannel(button) {
     let audio = document.getElementById('channel-audio-' + channel);
         audio.pause();
         audio.removeAttribute('src');
-        audio.onload();
+        audio.load();
         audio.remove();
         indicator.style.backgroundColor = 'var(--off)';
         button.setAttribute('data-active', 0);
