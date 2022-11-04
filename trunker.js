@@ -120,6 +120,8 @@ function enableChannel(button) {
         audio.id = 'channel-audio-' + channel;
         audio.setAttribute('src', '/' + channel);
         audio.play();
+        audio.addEventListener('playing', onPlaying);
+
         button.appendChild(audio);
         indicator.style.backgroundColor = 'var(--on)';
         button.setAttribute('data-active', 1);
@@ -133,6 +135,10 @@ function disableChannel(button) {
         audio.remove();
         indicator.style.backgroundColor = 'var(--off)';
         button.setAttribute('data-active', 0);
+}
+
+function onPlaying(event) {
+    console.log(test);
 }
   
 var trunky = new Trunker();
