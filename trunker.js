@@ -135,6 +135,7 @@ function enableChannel(button) {
 
 function disableChannel(button) {
     let indicator = button.firstChild;
+    let activity = document.getElementById('channel-button-activity-' + channel);
     let channel = button.getAttribute('data-channel');
     let audio = document.getElementById('channel-audio-' + channel);
         audio.pause();
@@ -142,6 +143,7 @@ function disableChannel(button) {
         audio.load();
         audio.remove();
         indicator.style.backgroundColor = 'var(--off)';
+        activity.style.backgroundColor = 'var(--inactive)';
         button.setAttribute('data-active', 0);
 }
 
