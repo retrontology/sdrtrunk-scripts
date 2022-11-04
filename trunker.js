@@ -119,7 +119,6 @@ function enableChannel(button) {
     let audio = document.createElement('audio');
         audio.id = 'channel-audio-' + channel;
         audio.setAttribute('src', '/' + channel);
-        audio.load();
         audio.play();
         button.appendChild(audio);
         indicator.style.backgroundColor = 'var(--on)';
