@@ -104,20 +104,19 @@ function sanitizeName(name) {
 
 function toggleButton(event) {
     let button = event.currentTarget;
-    let indicator = button.firstChild;
-    let url = button.getAttribute('data-listen');
-    let channel = button.getAttribute('data-channel');
-    let group = button.getAttribute('data-group');
     let active = parseInt(button.getAttribute('data-active'));
     if (active) {
-        let audio = document.getElementById('channel-audio-' + channel);
-        audio.pause();
-        audio.remove();
-        indicator.style.backgroundColor = 'var(--off)';
-        button.setAttribute('data-active', 0);
+        disableChannel(button);
     }
     else {
-        let audio = document.createElement('audio');
+        enableChannel(button);
+    }
+}
+
+function enableChannel(button) {
+    let indicator = button.firstChild;
+    let channel = button.getAttribute('data-channel');
+    let audio = document.createElement('audio');
         audio.id = 'channel-audio-' + channel;
         audio.setAttribute('src', '/' + channel);
         audio.load();
@@ -125,7 +124,16 @@ function toggleButton(event) {
         button.appendChild(audio);
         indicator.style.backgroundColor = 'var(--on)';
         button.setAttribute('data-active', 1);
-    }
+}
+
+function disableChannel(button) {
+    let indicator = button.firstChild;
+    let channel = button.getAttribute('data-channel');
+    let audio = document.getElementById('channel-audio-' + channel);
+        audio.pause();
+        audio.remove();
+        indicator.style.backgroundColor = 'var(--off)';
+        button.setAttribute('data-active', 0);
 }
   
 var trunky = new Trunker();
