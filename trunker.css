@@ -1,8 +1,17 @@
 :root {
-    --on: lightgreen;
-    --off: red;
-    --active: #408dff;
-    --inactive: #183053;
+    --on: #04c90b;
+    --off: #a80000;
+    --active: #0059df;
+    --inactive: #05142d;
+    --background: #9F9FA1;
+    --text-light: #F0F1F3;
+    --text-dark: #5D5A5A;
+    --light-accent: #8A8A87;
+    --dark-accent: #7D7A7A;
+}
+
+body {
+    background-color: var(--background);
 }
 
 table.channel-table {
