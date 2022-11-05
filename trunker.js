@@ -126,7 +126,7 @@ function enableChannel(button) {
         audio.addEventListener('error', onQuiet);
         audio.addEventListener('pause', onQuiet);
         audio.addEventListener('stalled', onQuiet);
-        audio.addEventListener('suspend', onQuiet);
+        //audio.addEventListener('suspend', onQuiet);
         audio.addEventListener('waiting', onQuiet);
         button.appendChild(audio);
         indicator.style.backgroundColor = 'var(--on)';
