@@ -15,7 +15,7 @@ PORT = '8000'
 PUBLIC = 'false'
 INLINE = 'true'
 DELAY = '0'
-MAX_RECORDING_AGE = '60000'
+MAX_RECORDING_AGE = '600000'
 FORMAT = 'MP3'
 
 def parse_args():
