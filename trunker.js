@@ -18,19 +18,25 @@ class Trunker {
             let channel_table = document.getElementById('channel-table');
             let title_row = document.createElement('th');
             title_row.classList.add('channel-group-header');
+            let disable_button = document.createElement('button');
+            disable_button.classList.add('channel-group-disable');
+            disable_button.setAttribute('data-group', clean_name);
+            disable_button.setAttribute('data-enabled', '0');
+            disable_button.addEventListener('click', disableGroup);
+            title_row.appendChild(disable_button);
             let title = document.createElement('span');
             title.classList.add('channel-group-title');
             title.textContent = name;
             title_row.appendChild(title);
-            let title_button = document.createElement('button');
-            title_button.classList.add('channel-group-collapse');
-            title_button.setAttribute('data-group', clean_name);
-            title_button.setAttribute('data-collapsed', '0');
-            title_button.addEventListener("click", onCollapseClick);
+            let collapse_button = document.createElement('button');
+            collapse_button.classList.add('channel-group-collapse');
+            collapse_button.setAttribute('data-group', clean_name);
+            collapse_button.setAttribute('data-collapsed', '0');
+            collapse_button.addEventListener("click", onCollapseClick);
             let arrow = document.createElement('div');
             arrow.classList.add('channel-group-collapse-arrow')
-            title_button.appendChild(arrow);
-            title_row.appendChild(title_button);
+            collapse_button.appendChild(arrow);
+            title_row.appendChild(collapse_button);
             let group_row = document.createElement('tr');
             group_row.classList.add('channel-group');
             group_row.id = 'group-' + clean_name;
@@ -196,6 +202,10 @@ function groupCollapse(group) {
 
 function groupExpand(group) {
     group.style.display = 'flex';
+}
+
+function disableGroup(event) {
+    
 }
 
 var trunky = new Trunker();
