@@ -107,7 +107,7 @@ class Channel {
 }
 
 function sanitizeName(name) {
-    name = name.replace(' ', '');
+    name = name.replaceAll(' ', '');
     return name;
 }
 
