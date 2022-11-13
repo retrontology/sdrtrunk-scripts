@@ -25,12 +25,23 @@ th.channel-group-header {
     margin: auto;
 }
 
+button.channel-group-disable {
+    height: 24px;
+    width: 24px;
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-right: 10px;
+    border-style: solid;
+    border-color: black;
+    background-color: var(--off);
+}
+
 button.channel-group-collapse {
     height: 32px;
     width: 32px;
     margin-top: auto;
     margin-bottom: auto;
-    margin-left: 10;
+    margin-left: 10px;
     border-style: solid;
     border-color: var(--dark-accent);
 }
