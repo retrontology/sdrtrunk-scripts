@@ -16,16 +16,19 @@ class Trunker {
         let clean_name = sanitizeName(name);
         if (!this.groups.has(clean_name)) {
             let channel_table = document.getElementById('channel-table');
-            let title_row = document.createElement('tr');
-            title_row.classList.add('channel-group-header');
-            let title = document.createElement('th');
+            let title_row = document.createElement('th');
+            title_row.classList.add('channel-group-name');
+            let title = document.createElement('span');
             title.classList.add('channel-group-title');
             title.textContent = name;
             title_row.appendChild(title);
+            let title_button = document.createElement('button');
+            title_button.classList.add('channel-group-collapse');
+            title_row.appendChild(title_button);
             let group_row = document.createElement('tr');
             group_row.classList.add('channel-group');
             group_row.id = 'group-' + clean_name;
-            channel_table.appendChild(title_row)
+            channel_table.appendChild(title_row);
             channel_table.appendChild(group_row);
             this.groups.add(clean_name);
         }
@@ -160,5 +163,5 @@ function onQuiet(event) {
     let indicator = document.getElementById('channel-button-activity-' + channel);
     indicator.style.backgroundColor = 'var(--inactive)';
 }
-  
+
 var trunky = new Trunker();
