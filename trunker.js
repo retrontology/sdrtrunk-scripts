@@ -25,6 +25,8 @@ class Trunker {
             let title_button = document.createElement('button');
             title_button.classList.add('channel-group-collapse');
             title_button.setAttribute('data-group', clean_name);
+            title_button.setAttribute('data-collapsed', '0');
+            title_button.addEventListener("click", onCollapseClick);
             let arrow = document.createElement('div');
             arrow.classList.add('channel-group-collapse-arrow')
             title_button.appendChild(arrow);
@@ -166,6 +168,38 @@ function onQuiet(event) {
     let channel = audio.getAttribute('data-channel');
     let indicator = document.getElementById('channel-button-activity-' + channel);
     indicator.style.backgroundColor = 'var(--inactive)';
+}
+
+function onCollapseClick(event) {
+    let button = event.currentTarget;
+    let group_name = button.getAttribute('data-group');
+    let group = document.getElementById('group-' + group_name);
+    let arrow = button.firstChild;
+    let collapsed = button.getAttribute('data-collapsed');
+    if (collapsed == '0') {
+        groupCollapse(group);
+        swapArrow(arrow);
+        button.setAttribute('data-collapsed', 1);
+    }
+    else {
+        groupExpand(group);
+        swapArrow(arrow);
+        button.setAttribute('data-collapsed', 0);
+    }
+}
+
+function swapArrow(element) {
+    let temp = element.style.borderTop;
+    element.style.borderTop = element.style.button-bottom;
+    element.style.borderBottom = temp;
+}
+
+function groupCollapse(group) {
+    group.style.display = 'none';
+}
+
+function groupExpand(group) {
+    group.style.display = 'flex';
 }
 
 var trunky = new Trunker();

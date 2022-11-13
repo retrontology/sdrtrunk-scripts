@@ -26,13 +26,20 @@ th.channel-group-header {
 }
 
 button.channel-group-collapse {
-    height: 30px;
-    width: 30px;
+    height: 32px;
+    width: 32px;
     margin-top: auto;
     margin-bottom: auto;
     margin-left: 10;
     border-style: solid;
     border-color: var(--dark-accent);
+}
+
+div.channel-group-collapse-arrow {
+    border: 10px solid transparent;
+    border-bottom: 0px;
+    border-top: 16px solid var(--dark-accent);
+    margin: auto;
 }
 
 tr.channel-group {
