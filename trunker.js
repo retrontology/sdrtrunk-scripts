@@ -178,20 +178,16 @@ function onCollapseClick(event) {
     let collapsed = button.getAttribute('data-collapsed');
     if (collapsed == '0') {
         groupCollapse(group);
-        swapArrow(arrow);
+        arrow.style.borderBottom = '16px solid var(--dark-accent)';
+        arrow.style.borderTop = '0px';
         button.setAttribute('data-collapsed', 1);
     }
     else {
         groupExpand(group);
-        swapArrow(arrow);
+        arrow.style.borderBottom = '0px';
+        arrow.style.borderTop = '16px solid var(--dark-accent)';
         button.setAttribute('data-collapsed', 0);
     }
-}
-
-function swapArrow(element) {
-    let temp = element.clientTop;
-    element.clientTop = element.clientBottom;
-    element.clientBottom = temp;
 }
 
 function groupCollapse(group) {
