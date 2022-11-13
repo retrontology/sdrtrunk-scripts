@@ -24,6 +24,10 @@ class Trunker {
             title_row.appendChild(title);
             let title_button = document.createElement('button');
             title_button.classList.add('channel-group-collapse');
+            title_button.setAttribute('data-group', clean_name);
+            let arrow = document.createElement('div');
+            arrow.classList.add('channel-group-collapse-arrow')
+            title_button.appendChild(arrow);
             title_row.appendChild(title_button);
             let group_row = document.createElement('tr');
             group_row.classList.add('channel-group');
