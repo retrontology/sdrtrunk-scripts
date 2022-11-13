@@ -19,6 +19,7 @@ class Trunker {
             let title_row = document.createElement('th');
             title_row.classList.add('channel-group-header');
             let disable_button = document.createElement('button');
+            disable_button.id = 'channel-group-disable-' + clean_name;
             disable_button.classList.add('channel-group-disable');
             disable_button.setAttribute('data-group', clean_name);
             disable_button.setAttribute('data-enabled', '0');
@@ -132,20 +133,26 @@ function enableChannel(button) {
     let indicator = button.firstChild;
     let channel = button.getAttribute('data-channel');
     let audio = document.createElement('audio');
-        audio.id = 'channel-audio-' + channel;
-        audio.setAttribute('src', '/' + channel);
-        audio.setAttribute('data-channel', channel);
-        audio.play();
-        audio.addEventListener('playing', onPlaying);
-        audio.addEventListener('ended', onQuiet);
-        audio.addEventListener('error', onQuiet);
-        audio.addEventListener('pause', onQuiet);
-        audio.addEventListener('stalled', onQuiet);
-        //audio.addEventListener('suspend', onQuiet);
-        audio.addEventListener('waiting', onQuiet);
-        button.appendChild(audio);
-        indicator.style.backgroundColor = 'var(--on)';
-        button.setAttribute('data-active', 1);
+    audio.id = 'channel-audio-' + channel;
+    audio.setAttribute('src', '/' + channel);
+    audio.setAttribute('data-channel', channel);
+    audio.play();
+    audio.addEventListener('playing', onPlaying);
+    audio.addEventListener('ended', onQuiet);
+    audio.addEventListener('error', onQuiet);
+    audio.addEventListener('pause', onQuiet);
+    audio.addEventListener('stalled', onQuiet);
+    //audio.addEventListener('suspend', onQuiet);
+    audio.addEventListener('waiting', onQuiet);
+    button.appendChild(audio);
+    indicator.style.backgroundColor = 'var(--on)';
+    button.setAttribute('data-active', 1);
+    let group = button.getAttribute('data-group');
+    let group_disable = document.getElementById('channel-group-disable-' + group);
+    if (group_disable.getAttribute('data-enabled') == '0') {
+        group_disable.setAttribute('data-enabled', 1);
+        group_disable.style.backgroundColor = 'var(--on)';
+    }
 }
 
 function disableChannel(button) {
@@ -153,13 +160,13 @@ function disableChannel(button) {
     let channel = button.getAttribute('data-channel');
     let activity = document.getElementById('channel-button-activity-' + channel);
     let audio = document.getElementById('channel-audio-' + channel);
-        audio.pause();
-        audio.removeAttribute('src');
-        audio.load();
-        audio.remove();
-        indicator.style.backgroundColor = 'var(--off)';
-        activity.style.backgroundColor = 'var(--inactive)';
-        button.setAttribute('data-active', 0);
+    audio.pause();
+    audio.removeAttribute('src');
+    audio.load();
+    audio.remove();
+    indicator.style.backgroundColor = 'var(--off)';
+    activity.style.backgroundColor = 'var(--inactive)';
+    button.setAttribute('data-active', 0);
 }
 
 function onPlaying(event) {
@@ -205,7 +212,21 @@ function groupExpand(group) {
 }
 
 function disableGroup(event) {
-    
+    let button = event.currentTarget;
+    let status = button.getAttribute('data-enabled');
+    if (status == '1') {
+        let group = button.getAttribute('data-group');
+        let group_row = document.getElementById('group-' + group);
+        for (var i = 0; i < group_row.children.length; i++) {
+            let child = group_row.children[i];
+            let channel_button = child.firstChild;
+            if (channel_button.getAttribute('data-active') == '1') {
+                disableChannel(channel_button);
+            }
+        }
+        button.style.backgroundColor = '--var(--off)'
+        button.setAttribute('data-enabled', '0')
+    }
 }
 
 var trunky = new Trunker();
