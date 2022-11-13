@@ -17,7 +17,7 @@ class Trunker {
         if (!this.groups.has(clean_name)) {
             let channel_table = document.getElementById('channel-table');
             let title_row = document.createElement('th');
-            title_row.classList.add('channel-group-name');
+            title_row.classList.add('channel-group-header');
             let title = document.createElement('span');
             title.classList.add('channel-group-title');
             title.textContent = name;
