@@ -167,6 +167,20 @@ function disableChannel(button) {
     indicator.style.backgroundColor = 'var(--off)';
     activity.style.backgroundColor = 'var(--inactive)';
     button.setAttribute('data-active', 0);
+    let group = button.getAttribute('data-group');
+    let group_row = document.getElementById('group-' + group);
+    let remaining = false;
+    for (var i = 0; i < group_row.children.length; i++) {
+        if (group_row.children[i].getAttribute('data-active') == '1') {
+            remaining = true;
+            break;
+        }
+    }
+    if (remaining == false) {
+        let group_button = document.getElementById('channel-group-disable-' + group);
+        group_button.style.backgroundColor = 'var(--off)'
+        group_button.setAttribute('data-enabled', '0')
+    }
 }
 
 function onPlaying(event) {
@@ -224,8 +238,6 @@ function disableGroup(event) {
                 disableChannel(channel_button);
             }
         }
-        button.style.backgroundColor = 'var(--off)'
-        button.setAttribute('data-enabled', '0')
     }
 }
 
