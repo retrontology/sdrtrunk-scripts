@@ -173,7 +173,6 @@ function disableChannel(button) {
     for (var i = 0; i < group_row.children.length; i++) {
         if (group_row.children[i].getAttribute('data-active') == '1') {
             remaining = true;
-            break;
         }
     }
     if (remaining == false) {
