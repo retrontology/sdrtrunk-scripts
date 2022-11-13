@@ -8,6 +8,9 @@
     --text-dark: #5D5A5A;
     --light-accent: #8A8A87;
     --dark-accent: #7D7A7A;
+    --collapse-min: 0px;
+    --collapse-mid: 8px solid transparent;
+    --collapse-max: 12px solid var(--dark-accent);
 }
 
 body {
@@ -37,8 +40,8 @@ button.channel-group-disable {
 }
 
 button.channel-group-collapse {
-    height: 32px;
-    width: 32px;
+    height: 28px;
+    width: 28px;
     margin-top: auto;
     margin-bottom: auto;
     margin-left: 10px;
@@ -47,9 +50,9 @@ button.channel-group-collapse {
 }
 
 div.channel-group-collapse-arrow {
-    border: 10px solid transparent;
-    border-bottom: 0px;
-    border-top: 16px solid var(--dark-accent);
+    border: var(--collapse-mid);
+    border-bottom: var(--collapse-min);
+    border-top: var(--collapse-max);
     margin: auto;
 }
 

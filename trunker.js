@@ -205,14 +205,14 @@ function onCollapseClick(event) {
     let collapsed = button.getAttribute('data-collapsed');
     if (collapsed == '0') {
         groupCollapse(group);
-        arrow.style.borderBottom = '16px solid var(--dark-accent)';
-        arrow.style.borderTop = '0px';
+        arrow.style.borderBottom = 'var(--collapse-max)';
+        arrow.style.borderTop = 'var(--collapse-min)';
         button.setAttribute('data-collapsed', 1);
     }
     else {
         groupExpand(group);
-        arrow.style.borderBottom = '0px';
-        arrow.style.borderTop = '16px solid var(--dark-accent)';
+        arrow.style.borderBottom = 'var(--collapse-min)';
+        arrow.style.borderTop = 'var(--collapse-max)';
         button.setAttribute('data-collapsed', 0);
     }
 }
