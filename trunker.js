@@ -189,9 +189,9 @@ function onCollapseClick(event) {
 }
 
 function swapArrow(element) {
-    let temp = element.style.borderTop;
-    element.style.borderTop = element.style.buttonBottom;
-    element.style.borderBottom = temp;
+    let temp = element.clientTop;
+    element.clientTop = element.clientBottom;
+    element.clientBottom = temp;
 }
 
 function groupCollapse(group) {
