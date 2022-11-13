@@ -190,7 +190,7 @@ function onCollapseClick(event) {
 
 function swapArrow(element) {
     let temp = element.style.borderTop;
-    element.style.borderTop = element.style.button-bottom;
+    element.style.borderTop = element.style.buttonBottom;
     element.style.borderBottom = temp;
 }
 
