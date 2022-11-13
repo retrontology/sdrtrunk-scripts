@@ -224,7 +224,7 @@ function disableGroup(event) {
                 disableChannel(channel_button);
             }
         }
-        button.style.backgroundColor = '--var(--off)'
+        button.style.backgroundColor = 'var(--off)'
         button.setAttribute('data-enabled', '0')
     }
 }
