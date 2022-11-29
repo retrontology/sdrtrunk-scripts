@@ -1,79 +1,4 @@
-class Trunker {
-    constructor() {
-        this.getChannels();
-    }
-
-    get statusUrl() {
-        return '/status-json.xsl';
-    }
-
-    addChannel(channel) {
-        this.addGroup(channel.genre);
-        this.channels[channel.server_name] = new Channel(channel);
-    }
-
-    addGroup(name) {
-        let clean_name = sanitizeName(name);
-        if (!this.groups.has(clean_name)) {
-            let channel_table = document.getElementById('channel-table');
-            let title_row = document.createElement('th');
-            title_row.classList.add('channel-group-header');
-            let disable_button = document.createElement('button');
-            disable_button.id = 'channel-group-disable-' + clean_name;
-            disable_button.classList.add('channel-group-disable');
-            disable_button.setAttribute('data-group', clean_name);
-            disable_button.setAttribute('data-enabled', '0');
-            disable_button.addEventListener('click', disableGroup);
-            title_row.appendChild(disable_button);
-            let title = document.createElement('span');
-            title.classList.add('channel-group-title');
-            title.textContent = name;
-            title_row.appendChild(title);
-            let collapse_button = document.createElement('button');
-            collapse_button.classList.add('channel-group-collapse');
-            collapse_button.setAttribute('data-group', clean_name);
-            collapse_button.setAttribute('data-collapsed', '0');
-            collapse_button.addEventListener("click", onCollapseClick);
-            let arrow = document.createElement('div');
-            arrow.classList.add('channel-group-collapse-arrow')
-            collapse_button.appendChild(arrow);
-            title_row.appendChild(collapse_button);
-            let group_row = document.createElement('tr');
-            group_row.classList.add('channel-group');
-            group_row.id = 'group-' + clean_name;
-            channel_table.appendChild(title_row);
-            channel_table.appendChild(group_row);
-            this.groups.add(clean_name);
-        }
-    }
-
-    getChannels() {
-        let request = new XMLHttpRequest();
-        request.open( "GET", this.statusUrl, true ); // false for synchronous request
-        request.onload = (e) => {
-            if (request.readyState === 4) {
-              if (request.status === 200) {
-                this.populate(JSON.parse(request.responseText));
-              } else {
-                console.error(request.statusText);
-              }
-            }
-          };
-          request.onerror = (e) => {
-            console.error(request.statusText);
-          };
-        request.send( null );
-    }
-
-    populate(data) {
-        this.channels = {};
-        this.groups = new Set();
-        for (const channel of data.icestats.source){
-            this.addChannel(channel);
-        }
-    }
-
-}
+STATUS_URL = '/status-json.xsl'
 
 class Channel {
     constructor(channel) {
@@ -112,6 +37,75 @@ class Channel {
         return this.element;
     }
 }
+
+function addChannel(channel) {
+    addGroup(channel.genre);
+    return new Channel(channel);
+}
+
+function addGroup(name) {
+    let clean_name = sanitizeName(name);
+    // Check current groups #TODO
+    if (!this.groups.has(clean_name)) {
+        let channel_table = document.getElementById('channel-table');
+        let title_row = document.createElement('th');
+        title_row.classList.add('channel-group-header');
+        let disable_button = document.createElement('button');
+        disable_button.id = 'channel-group-disable-' + clean_name;
+        disable_button.classList.add('channel-group-disable');
+        disable_button.setAttribute('data-group', clean_name);
+        disable_button.setAttribute('data-enabled', '0');
+        disable_button.addEventListener('click', disableGroup);
+        title_row.appendChild(disable_button);
+        let title = document.createElement('span');
+        title.classList.add('channel-group-title');
+        title.textContent = name;
+        title_row.appendChild(title);
+        let collapse_button = document.createElement('button');
+        collapse_button.classList.add('channel-group-collapse');
+        collapse_button.setAttribute('data-group', clean_name);
+        collapse_button.setAttribute('data-collapsed', '0');
+        collapse_button.addEventListener("click", onCollapseClick);
+        let arrow = document.createElement('div');
+        arrow.classList.add('channel-group-collapse-arrow')
+        collapse_button.appendChild(arrow);
+        title_row.appendChild(collapse_button);
+        let group_row = document.createElement('tr');
+        group_row.classList.add('channel-group');
+        group_row.id = 'group-' + clean_name;
+        channel_table.appendChild(title_row);
+        channel_table.appendChild(group_row);
+        this.groups.add(clean_name);
+    }
+}
+
+function getChannels() {
+    let request = new XMLHttpRequest();
+    request.open( "GET", STATUS_URL, true ); // false for synchronous request
+    request.onload = (e) => {
+        if (request.readyState === 4) {
+            if (request.status === 200) {
+            populate(JSON.parse(request.responseText));
+            } else {
+            console.error(request.statusText);
+            }
+        }
+        };
+        request.onerror = (e) => {
+        console.error(request.statusText);
+        };
+    request.send( null );
+}
+
+function populate(data) {
+    channels = {};
+    groups = new Set();
+    for (const channel of data.icestats.source){
+        this.addChannel(channel);
+    }
+}
+
+
 
 function sanitizeName(name) {
     name = name.replaceAll(' ', '');
@@ -240,4 +234,9 @@ function disableGroup(event) {
     }
 }
 
-var trunky = new Trunker();
+
+function main() {
+    getChannels()
+}
+
+main();
