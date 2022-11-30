@@ -207,7 +207,7 @@ function groupCollapse(group_name) {
     let group = document.getElementById('group-' + group_name);
     group.style.display = 'none';
 
-    let button = group.getElementsByClassName('channel-group-collapse-arrow').item(0);
+    let button = group.getElementsByClassName('channel-group-collapse-arrow')[0];
     let arrow = button.firstChild;
     arrow.style.borderBottom = 'var(--collapse-max)';
     arrow.style.borderTop = 'var(--collapse-min)';
@@ -218,7 +218,7 @@ function groupExpand(group_name) {
     let group = document.getElementById('group-' + group_name);
     group.style.display = 'flex';
 
-    let button = group.getElementsByClassName('channel-group-collapse-arrow').item(0);
+    let button = group.getElementsByClassName('channel-group-collapse-arrow')[0];
     let arrow = button.firstChild;
     arrow.style.borderBottom = 'var(--collapse-min)';
     arrow.style.borderTop = 'var(--collapse-max)';
