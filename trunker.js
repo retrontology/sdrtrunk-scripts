@@ -48,7 +48,7 @@ function addChannel(channel) {
 function addGroup(name) {
     let clean_name = sanitizeName(name);
     let groups = document.getElementsByClassName('channel-group-header');
-    groups = groups.map(x => x.firstChild.getAttribute('data-group'));
+    groups = Array.from(groups).map(x => x.firstChild.getAttribute('data-group'));
     if (!groups.includes(clean_name)) {
         let channel_table = document.getElementById('channel-table');
         let title_row = document.createElement('th');
