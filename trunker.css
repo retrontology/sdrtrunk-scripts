@@ -18,19 +18,44 @@ div.title-bar {
     border-style: solid;
     border-width: 2;
     border-color: black;
-    display: flex;
     height: 96px;
     margin: 8px;
-    justify-content: right;
+    display: flex;
+    justify-content: center;
+}
+
+div.title-spacer {
+    width: 33%;
 }
 
 div.title-block {
+    width: 33%;
+    display: flex;
+    justify-content: center;
     margin: auto;
 }
 
+span.title {
+    font-size: 48px;
+    font-weight: bold;
+}
+
 div.refresh-widget {
-    justify-self: end;
-    margin: auto;
+    width: 33%;
+    display: flex;
+    justify-content: right;
+}
+
+label.refresh-widget-label {
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-right: 4px;
+}
+
+select.refresh-interval {
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-right: 16px;
 }
 
 body {
