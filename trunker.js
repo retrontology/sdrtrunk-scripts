@@ -194,30 +194,35 @@ function onQuiet(event) {
 function onCollapseClick(event) {
     let button = event.currentTarget;
     let group_name = button.getAttribute('data-group');
-    let arrow = button.firstChild;
     let collapsed = button.getAttribute('data-collapsed');
     if (collapsed == '0') {
         groupCollapse(group_name);
-        arrow.style.borderBottom = 'var(--collapse-max)';
-        arrow.style.borderTop = 'var(--collapse-min)';
-        button.setAttribute('data-collapsed', 1);
     }
     else {
         groupExpand(group_name);
-        arrow.style.borderBottom = 'var(--collapse-min)';
-        arrow.style.borderTop = 'var(--collapse-max)';
-        button.setAttribute('data-collapsed', 0);
     }
 }
 
 function groupCollapse(group_name) {
     let group = document.getElementById('group-' + group_name);
     group.style.display = 'none';
+
+    let button = group.getElementsByClassName('channel-group-collapse-arrow').item(0);
+    let arrow = button.firstChild;
+    arrow.style.borderBottom = 'var(--collapse-max)';
+    arrow.style.borderTop = 'var(--collapse-min)';
+    button.setAttribute('data-collapsed', 1);
 }
 
 function groupExpand(group_name) {
     let group = document.getElementById('group-' + group_name);
     group.style.display = 'flex';
+
+    let button = group.getElementsByClassName('channel-group-collapse-arrow').item(0);
+    let arrow = button.firstChild;
+    arrow.style.borderBottom = 'var(--collapse-min)';
+    arrow.style.borderTop = 'var(--collapse-max)';
+    button.setAttribute('data-collapsed', 0);
 }
 
 function disableGroup(event) {
