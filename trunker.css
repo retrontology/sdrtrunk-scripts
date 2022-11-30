@@ -34,8 +34,16 @@ div.title-spacer {
 }
 
 div.expand-collapse-all {
-    display: block;
     
+    
+}
+
+button.expand-collapse-all {
+    display: block;
+    width: 100%;
+    margin: 2px;
+    background-color: var(--text-light);
+    border-color: var(--dark-accent);
 }
 
 
