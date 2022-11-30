@@ -51,6 +51,7 @@ function addGroup(name) {
     if (!groups.includes(clean_name)) {
         let channel_table = document.getElementById('channel-table');
         let title_row = document.createElement('th');
+        title_row.id = 'group-header-' + clean_name;
         title_row.classList.add('channel-group-header');
         title_row.setAttribute('data-group', clean_name);
         let disable_button = document.createElement('button');
@@ -65,6 +66,7 @@ function addGroup(name) {
         title.textContent = name;
         title_row.appendChild(title);
         let collapse_button = document.createElement('button');
+        collapse_button.id = 'group-collapse-' + clean_name;
         collapse_button.classList.add('channel-group-collapse');
         collapse_button.setAttribute('data-group', clean_name);
         collapse_button.setAttribute('data-collapsed', '0');
@@ -207,7 +209,7 @@ function groupCollapse(group_name) {
     let group = document.getElementById('group-' + group_name);
     group.style.display = 'none';
 
-    let button = group.getElementsByClassName('channel-group-collapse-arrow')[0];
+    let button = document.getElementById('group-collapse-' + group_name);
     let arrow = button.firstChild;
     arrow.style.borderBottom = 'var(--collapse-max)';
     arrow.style.borderTop = 'var(--collapse-min)';
@@ -218,7 +220,7 @@ function groupExpand(group_name) {
     let group = document.getElementById('group-' + group_name);
     group.style.display = 'flex';
 
-    let button = group.getElementsByClassName('channel-group-collapse-arrow')[0];
+    let button = document.getElementById('group-collapse-' + group_name);
     let arrow = button.firstChild;
     arrow.style.borderBottom = 'var(--collapse-min)';
     arrow.style.borderTop = 'var(--collapse-max)';
