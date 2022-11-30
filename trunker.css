@@ -26,7 +26,18 @@ div.title-bar {
 
 div.title-spacer {
     width: 33%;
+    display: flex;
+    justify-content: left;
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-left: 16px;
 }
+
+div.expand-collapse-all {
+    display: block;
+    
+}
+
 
 div.title-block {
     width: 33%;
