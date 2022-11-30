@@ -8,6 +8,24 @@
         <title>Trunker</title>
     </header>
     <body onload="getChannels()">
+        <div id="title-bar">
+            <div id="title-block">
+                <span id="title">Trunker</span>
+            </div>
+            <div id="refresh-widget">
+                <label id="refresh-widget-label">refresh status every:</label>
+                <select name="refresh-interval" id="refresh-interval">
+                    <option value="1">1 second</option>
+                    <option value="5">5 seconds</option>
+                    <option value="10">10 seconds</option>
+                    <option value="15">15 seconds</option>
+                    <option value="30">30 seconds</option>
+                    <option value="60">1 minute</option>
+                    <option value="300">5 minutes</option>
+                    <option value="-1" selected>disabled</option>
+                </select>
+            </div>
+        </div>
         <table class="channel-table" id="channel-table">
         </table>
     </body>
