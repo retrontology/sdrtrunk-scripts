@@ -41,7 +41,6 @@ class Channel {
 function addChannel(channel) {
     addGroup(channel.genre);
     let new_channel = new Channel(channel);
-    new_channel.generateElement();
     return new_channel;
 }
 
