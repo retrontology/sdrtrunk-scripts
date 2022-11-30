@@ -40,9 +40,9 @@ class Channel {
 
 function addChannel(channel) {
     addGroup(channel.genre);
-    let channel = new Channel(channel);
-    channel.generateElement();
-    return channel;
+    let new_channel = new Channel(channel);
+    new_channel.generateElement();
+    return new_channel;
 }
 
 function addGroup(name) {
@@ -106,8 +106,6 @@ function populate(data) {
         addChannel(channel);
     }
 }
-
-
 
 function sanitizeName(name) {
     name = name.replaceAll(' ', '');
