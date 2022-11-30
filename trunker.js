@@ -40,13 +40,16 @@ class Channel {
 
 function addChannel(channel) {
     addGroup(channel.genre);
-    return new Channel(channel);
+    let channel = new Channel(channel)
+    channel.generateElement()
+    return channel;
 }
 
 function addGroup(name) {
     let clean_name = sanitizeName(name);
-    // Check current groups #TODO
-    if (!this.groups.has(clean_name)) {
+    let groups = document.getElementsByClassName('channel-group-header');
+    groups = groups.map(x => x.firstChild.getAttribute('data-group'));
+    if (!groups.includes(clean_name)) {
         let channel_table = document.getElementById('channel-table');
         let title_row = document.createElement('th');
         title_row.classList.add('channel-group-header');
@@ -75,7 +78,6 @@ function addGroup(name) {
         group_row.id = 'group-' + clean_name;
         channel_table.appendChild(title_row);
         channel_table.appendChild(group_row);
-        this.groups.add(clean_name);
     }
 }
 
@@ -101,7 +103,7 @@ function populate(data) {
     channels = {};
     groups = new Set();
     for (const channel of data.icestats.source){
-        this.addChannel(channel);
+        addChannel(channel);
     }
 }
 
