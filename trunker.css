@@ -71,8 +71,11 @@ table.channel-table {
 th.channel-group-header {
     display: flex;
     justify-content: center;
+    background-color: var(--text-light);
+    margin: 16px;
     font-size: 32px;
-    margin: auto;
+    border-style: solid;
+    border-width: 2px;
 }
 
 button.channel-group-disable {
