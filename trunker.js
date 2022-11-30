@@ -1,4 +1,4 @@
-const STATUS_URL = '/status-json.xsl'
+const STATUS_URL = '/status-json.xsl';
 
 class Channel {
     constructor(channel) {
@@ -6,7 +6,7 @@ class Channel {
             this[key] = channel[key];
         }
         this.active = true;
-        this.group = sanitizeName(this.genre)
+        this.group = sanitizeName(this.genre);
         this.generateElement();
     }
 
@@ -40,8 +40,8 @@ class Channel {
 
 function addChannel(channel) {
     addGroup(channel.genre);
-    let channel = new Channel(channel)
-    channel.generateElement()
+    let channel = new Channel(channel);
+    channel.generateElement();
     return channel;
 }
 
@@ -70,7 +70,7 @@ function addGroup(name) {
         collapse_button.setAttribute('data-collapsed', '0');
         collapse_button.addEventListener("click", onCollapseClick);
         let arrow = document.createElement('div');
-        arrow.classList.add('channel-group-collapse-arrow')
+        arrow.classList.add('channel-group-collapse-arrow');
         collapse_button.appendChild(arrow);
         title_row.appendChild(collapse_button);
         let group_row = document.createElement('tr');
@@ -173,8 +173,8 @@ function disableChannel(button) {
     }
     if (remaining == false) {
         let group_button = document.getElementById('channel-group-disable-' + group);
-        group_button.style.backgroundColor = 'var(--off)'
-        group_button.setAttribute('data-enabled', '0')
+        group_button.style.backgroundColor = 'var(--off)';
+        group_button.setAttribute('data-enabled', '0');
     }
 }
 
