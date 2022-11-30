@@ -215,7 +215,7 @@ function groupCollapse(group_name) {
     group.style.display = 'none';
 }
 
-function groupExpand(group) {
+function groupExpand(group_name) {
     let group = document.getElementById('group-' + group_name);
     group.style.display = 'flex';
 }
