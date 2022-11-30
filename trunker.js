@@ -52,6 +52,7 @@ function addGroup(name) {
         let channel_table = document.getElementById('channel-table');
         let title_row = document.createElement('th');
         title_row.classList.add('channel-group-header');
+        title_row.setAttribute('data-group', clean_name);
         let disable_button = document.createElement('button');
         disable_button.id = 'channel-group-disable-' + clean_name;
         disable_button.classList.add('channel-group-disable');
@@ -74,6 +75,7 @@ function addGroup(name) {
         title_row.appendChild(collapse_button);
         let group_row = document.createElement('tr');
         group_row.classList.add('channel-group');
+        group_row.setAttribute('data-group', clean_name);
         group_row.id = 'group-' + clean_name;
         channel_table.appendChild(title_row);
         channel_table.appendChild(group_row);
@@ -192,28 +194,29 @@ function onQuiet(event) {
 function onCollapseClick(event) {
     let button = event.currentTarget;
     let group_name = button.getAttribute('data-group');
-    let group = document.getElementById('group-' + group_name);
     let arrow = button.firstChild;
     let collapsed = button.getAttribute('data-collapsed');
     if (collapsed == '0') {
-        groupCollapse(group);
+        groupCollapse(group_name);
         arrow.style.borderBottom = 'var(--collapse-max)';
         arrow.style.borderTop = 'var(--collapse-min)';
         button.setAttribute('data-collapsed', 1);
     }
     else {
-        groupExpand(group);
+        groupExpand(group_name);
         arrow.style.borderBottom = 'var(--collapse-min)';
         arrow.style.borderTop = 'var(--collapse-max)';
         button.setAttribute('data-collapsed', 0);
     }
 }
 
-function groupCollapse(group) {
+function groupCollapse(group_name) {
+    let group = document.getElementById('group-' + group_name);
     group.style.display = 'none';
 }
 
 function groupExpand(group) {
+    let group = document.getElementById('group-' + group_name);
     group.style.display = 'flex';
 }
 
@@ -231,4 +234,14 @@ function disableGroup(event) {
             }
         }
     }
+}
+
+function expandAll() {
+    let groups = document.getElementsByClassName('channel-group');
+    Array.from(groups).map(x => groupExpand(x.getAttribute('data-group')));
+}
+
+function collapseAll() {
+    let groups = document.getElementsByClassName('channel-group');
+    Array.from(groups).map(x => groupCollapse(x.getAttribute('data-group')));
 }
