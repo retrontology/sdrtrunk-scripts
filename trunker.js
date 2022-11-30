@@ -1,4 +1,4 @@
-STATUS_URL = '/status-json.xsl'
+const STATUS_URL = '/status-json.xsl'
 
 class Channel {
     constructor(channel) {
