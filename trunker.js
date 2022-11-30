@@ -235,10 +235,3 @@ function disableGroup(event) {
         }
     }
 }
-
-
-function main() {
-    getChannels()
-}
-
-main();
