@@ -13,11 +13,33 @@
     --collapse-max: 12px solid var(--dark-accent);
 }
 
+div.title-bar {
+    background-color: var(--text-light);
+    border-style: solid;
+    border-width: 2;
+    border-color: black;
+    display: flex;
+    height: 96px;
+    margin: 8px;
+    justify-content: right;
+}
+
+div.title-block {
+    margin: auto;
+}
+
+div.refresh-widget {
+    justify-self: end;
+    margin: auto;
+}
+
 body {
     background-color: var(--background);
+    margin: auto;
 }
 
 table.channel-table {
+    margin: auto;
     width: 100%;
 }
 
@@ -71,6 +93,7 @@ button.channel-button {
     border-style: solid;
     border-width: 2px;
     border-color: black;
+    background-color: var(--text-light);
     display: flex;
     flex-direction: column;
     justify-content: center;
