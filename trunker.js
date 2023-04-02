@@ -1,4 +1,5 @@
 const STATUS_URL = '/status-json.xsl';
+const audioContext = new AudioContext();
 
 class Channel {
     constructor(channel) {
@@ -133,7 +134,7 @@ function enableChannel(button) {
     audio.id = 'channel-audio-' + channel;
     audio.setAttribute('src', '/' + channel);
     audio.setAttribute('data-channel', channel);
-    audio.play();
+    let track = audioContext.createMediaElementSource(audioElement);
     audio.addEventListener('playing', onPlaying);
     audio.addEventListener('ended', onQuiet);
     audio.addEventListener('error', onQuiet);
@@ -141,6 +142,7 @@ function enableChannel(button) {
     audio.addEventListener('stalled', onQuiet);
     //audio.addEventListener('suspend', onQuiet);
     audio.addEventListener('waiting', onQuiet);
+    audio.play();
     button.appendChild(audio);
     indicator.style.backgroundColor = 'var(--on)';
     button.setAttribute('data-active', 1);
