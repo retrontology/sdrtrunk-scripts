@@ -135,6 +135,7 @@ function enableChannel(button) {
     audio.setAttribute('src', '/' + channel);
     audio.setAttribute('data-channel', channel);
     let track = audioContext.createMediaElementSource(audio);
+    track.connect(audioContext.destination);
     audio.play();
     audio.addEventListener('playing', onPlaying);
     audio.addEventListener('ended', onQuiet);
